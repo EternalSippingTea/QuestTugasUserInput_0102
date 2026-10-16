@@ -7,13 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
 
     <color name="form_purple">#7041B5</color>
     <color name="form_white">#FFFFFF</color>
     <color name="form_text">#333333</color>
     <color name="form_hint">#777777</color>
     <color name="form_border">#A8A8B0</color>
+    <color name="form_divider">#E2E2E2</color>
     <color name="form_scrim">#66000000</color>
     <color name="form_button_disabled">#E1E1E1</color>
-
 </resources>
