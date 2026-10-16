@@ -10,6 +10,7 @@
     <dimen name="form_button_height_compact">48dp</dimen>
     <dimen name="form_button_height">54dp</dimen>
     <dimen name="form_sheet_peek_height">48dp</dimen>
+    <dimen name="form_divider_thickness">1dp</dimen>
 
     <dimen name="form_title_size">28sp</dimen>
     <dimen name="form_title_font_size">22sp</dimen>
