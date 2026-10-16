@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">QuestTugasUserInput_102</string>
+
+    <string name="form_title">Form Biodata</string>
+    <string name="form_subtitle">Silahkan isi biodata Anda dibawah ini !!!</string>
+    <string name="first_name">Nama Depan</string>
+    <string name="last_name">Nama Belakang</string>
+    <string name="email">Email</string>
+    <string name="birth_date">Tgl Lahir</string>
+    <string name="experience">Experience</string>
+    <string name="choose_skill">Pilih Skill Anda :</string>
+    <string name="skill_android">Android</string>
+    <string name="skill_uiux">UI/UX</string>
+    <string name="skill_web">Web</string>
+    <string name="proceed">Proceed</string>
+    <string name="select_date">Pilih tanggal lahir</string>
+    <string name="exp_less_than_1">&lt; 1 Tahun</string>
+    <string name="exp_1_2_years">1 – 2 Tahun</string>
+    <string name="exp_3_5_years">3 – 5 Tahun</string>
+    <string name="exp_more_than_5">&gt; 5 Tahun</string>
+    <string name="result_title">Biodata submitted</string>
+    <string name="result_name">Nama</string>
+    <string name="result_email">Email</string>
+    <string name="result_birth_date">Tanggal lahir</string>
+    <string name="result_experience">Experience</string>
+    <string name="result_skills">Skills</string>
+    <string name="required_fields">Mohon lengkapi nama dan email.</string>
+    <string name="date_not_selected">Pilih tanggal lahir</string>
+    <string name="form_handle">Tarik untuk membuka atau menutup form</string>
+
+</resources>
