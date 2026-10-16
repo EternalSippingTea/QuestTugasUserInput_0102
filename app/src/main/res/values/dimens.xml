@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="form_horizontal_padding">20dp</dimen>
+    <dimen name="form_top_padding">18dp</dimen>
+    <dimen name="form_corner_radius">28dp</dimen>
+    <dimen name="form_corner_radius_large">32dp</dimen>
+    <dimen name="form_field_corner_radius">12dp</dimen>
+    <dimen name="form_field_spacing">10dp</dimen>
+    <dimen name="form_field_height">56dp</dimen>
+    <dimen name="form_button_height_compact">48dp</dimen>
+    <dimen name="form_button_height">54dp</dimen>
+    <dimen name="form_sheet_peek_height">48dp</dimen>
 
-        <dimen name="form_horizontal_padding">20dp</dimen>
-        <dimen name="form_top_padding">18dp</dimen>
-        <dimen name="form_corner_radius">28dp</dimen>
-        <dimen name="form_field_spacing">10dp</dimen>
-        <dimen name="form_field_height">56dp</dimen>
-        <dimen name="form_title_size">28sp</dimen>
-        <dimen name="form_subtitle_size">14sp</dimen>
-        <dimen name="form_label_size">14sp</dimen>
-        <dimen name="form_button_height">54dp</dimen>
-        <dimen name="form_sheet_peek_height">48dp</dimen>
-        <dimen name="form_background_scrim">0dp</dimen>
+    <dimen name="form_title_size">28sp</dimen>
+    <dimen name="form_title_font_size">22sp</dimen>
+    <dimen name="form_subtitle_size">14sp</dimen>
+    <dimen name="form_subtitle_font_size">12sp</dimen>
+    <dimen name="form_label_size">14sp</dimen>
+    <dimen name="form_label_font_size">12sp</dimen>
+    <dimen name="form_input_font_size">13sp</dimen>
+    <dimen name="form_button_font_size">14sp</dimen>
 
+    <dimen name="form_spacing_tiny">4dp</dimen>
+    <dimen name="form_spacing_small">6dp</dimen>
+    <dimen name="form_spacing_medium">8dp</dimen>
+    <dimen name="form_spacing_large">12dp</dimen>
+    <dimen name="form_spacing_xlarge">14dp</dimen>
+    <dimen name="form_spacing_xxlarge">16dp</dimen>
+    <dimen name="form_spacing_section">20dp</dimen>
+    <dimen name="form_spacing_header">22dp</dimen>
+    <dimen name="form_bottom_space">36dp</dimen>
+    <dimen name="form_shadow_height">10dp</dimen>
+    <dimen name="form_elevation_sheet">20dp</dimen>
+    <dimen name="form_icon_size">20dp</dimen>
+    <dimen name="form_icon_button_size">36dp</dimen>
 </resources>
