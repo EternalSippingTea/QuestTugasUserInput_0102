@@ -27,5 +27,7 @@
     <string name="required_fields">Mohon lengkapi nama dan email.</string>
     <string name="date_not_selected">Pilih tanggal lahir</string>
     <string name="form_handle">Tarik untuk membuka atau menutup form</string>
-
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="date_format">dd/MM/yyyy</string>
 </resources>
