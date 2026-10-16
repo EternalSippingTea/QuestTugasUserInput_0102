@@ -11,6 +11,7 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.rememberCoroutineScope
@@ -18,6 +19,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -79,6 +82,25 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 .align(Alignment.TopCenter)
                 .padding(top = 16.dp)
         )
+
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .shadow(
+                    elevation = 20.dp,
+                    shape = sheetShape,
+                    clip = false,
+                    ambientColor = Color.Black,
+                    spotColor = Color.Black
+                ),
+            shape = sheetShape,
+            color = colorResource(R.color.form_white),
+            shadowElevation = 20.dp
+        ){
+            
+        }
+
 
 
 
