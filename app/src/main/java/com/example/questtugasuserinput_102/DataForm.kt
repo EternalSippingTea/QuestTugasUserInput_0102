@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Checkbox
@@ -37,6 +38,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Modifier
@@ -161,7 +163,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                             modifier = Modifier
                                 .weight(1f)
                         )
-                        
+
                         OutlinedTextField(
                             value = lastName,
                             onValueChange = { lastName = it },
@@ -182,8 +184,30 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = {
+                            Text(
+                                text = stringResource(R.string.email),
+                                fontSize = 12.sp
+                            )
+                        },
+                        textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                        singleLine = true,
+                        shape = textFieldShape,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Email
+                        ),
+                        colors = formTextFieldColors,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
 
-                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+
+
+                }
 
 
 
