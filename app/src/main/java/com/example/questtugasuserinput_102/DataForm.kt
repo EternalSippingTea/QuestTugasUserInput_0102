@@ -317,7 +317,52 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                     )
 
                     Spacer(modifier = Modifier.height(4.dp))
-                    
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(
+                                checked = androidSkill,
+                                onCheckedChange = { androidSkill = it },
+                                colors = checkboxColors
+                            )
+                            Text(
+                                text = stringResource(R.string.skill_android),
+                                color = colorResource(R.color.form_text),
+                                fontSize = 12.sp
+                            )
+                        }
+
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(
+                                checked = uiuxSkill,
+                                onCheckedChange = { uiuxSkill = it },
+                                colors = checkboxColors
+                            )
+                            Text(
+                                text = stringResource(R.string.skill_uiux),
+                                color = colorResource(R.color.form_text),
+                                fontSize = 12.sp
+                            )
+                        }
+
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(
+                                checked = webSkill,
+                                onCheckedChange = { webSkill = it },
+                                colors = checkboxColors
+                            )
+                            Text(
+                                text = stringResource(R.string.skill_web),
+                                color = colorResource(R.color.form_text),
+                                fontSize = 12.sp
+                            )
+                        }
+                    }
+
                 }
 
 
