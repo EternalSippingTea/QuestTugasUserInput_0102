@@ -161,6 +161,26 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                             modifier = Modifier
                                 .weight(1f)
                         )
+                        
+                        OutlinedTextField(
+                            value = lastName,
+                            onValueChange = { lastName = it },
+                            label = {
+                                Text(
+                                    text = stringResource(R.string.last_name),
+                                    fontSize = 12.sp
+                                )
+                            },
+                            textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                            singleLine = true,
+                            shape = textFieldShape,
+                            colors = formTextFieldColors,
+                            modifier = Modifier
+                                .weight(1f)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
 
 
                     }
