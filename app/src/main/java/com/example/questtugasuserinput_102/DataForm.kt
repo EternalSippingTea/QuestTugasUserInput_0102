@@ -17,6 +17,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Checkbox
@@ -46,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Modifier
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormDataDiri(modifier: Modifier = Modifier) {
     var firstName by remember { mutableStateOf("") }
@@ -246,8 +250,62 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                                 .weight(1f)
                         )
 
-
+                        ExposedDropdownMenuBox(
+                            expanded = showExperienceMenu,
+                            onExpandedChange = {
+                                showExperienceMenu = !showExperienceMenu
+                            },
+                            modifier = Modifier
+                                .weight(1f)
+                        ) {
+                            OutlinedTextField(
+                                value = experience,
+                                onValueChange = {},
+                                readOnly = true,
+                                singleLine = true,
+                                label = {
+                                    Text(
+                                        text = stringResource(R.string.experience),
+                                        fontSize = 12.sp,
+                                        maxLines = 1
+                                    )
+                                },
+                                textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                                shape = textFieldShape,
+                                trailingIcon = {
+                                    ExposedDropdownMenuDefaults.TrailingIcon(
+                                        expanded = showExperienceMenu
+                                    )
+                                },
+                                colors = formTextFieldColors,
+                                modifier = Modifier
+                                    .menuAnchor()
+                                    .fillMaxWidth()
+                            )
+                            ExposedDropdownMenu(
+                                expanded = showExperienceMenu,
+                                onDismissRequest = {
+                                    showExperienceMenu = false
+                                }
+                            ) {
+                                listOf(
+                                    stringResource(R.string.exp_less_than_1),
+                                    stringResource(R.string.exp_1_2_years),
+                                    stringResource(R.string.exp_3_5_years),
+                                    stringResource(R.string.exp_more_than_5)
+                                ).forEach { level ->
+                                    DropdownMenuItem(
+                                        text = { Text(level, color = colorResource(R.color.form_text), fontSize = 13.sp) },
+                                        onClick = {
+                                            experience = level
+                                            showExperienceMenu = false
+                                        }
+                                    )
+                                }
+                            }
+                        }
                     }
+                }
 
 
 
