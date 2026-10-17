@@ -26,6 +26,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
@@ -101,183 +102,145 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
         topEnd = 32.dp
     )
 
-    Box(modifier = modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(R.drawable.bg4),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
+    Scaffold(
+        snackbarHost = {
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+        },
+        modifier = modifier.fillMaxSize()
+    ) { innerPadding ->
+        Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
+            Image(
+                painter = painterResource(R.drawable.bg4),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
 
-        SnackbarHost(
-            hostState = snackbarHostState,
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(top = 16.dp)
-        )
-
-        Surface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .shadow(
-                    elevation = 20.dp,
-                    shape = sheetShape,
-                    clip = false,
-                    ambientColor = Color.Black,
-                    spotColor = Color.Black
-                ),
-            shape = sheetShape,
-            color = colorResource(R.color.form_white),
-            shadowElevation = 20.dp
-        ){
-            Column(
+            Surface(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(top = 22.dp)
-                    .navigationBarsPadding(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .align(Alignment.BottomCenter)
+                    .shadow(
+                        elevation = 20.dp,
+                        shape = sheetShape,
+                        clip = false,
+                        ambientColor = Color.Black,
+                        spotColor = Color.Black
+                    ),
+                shape = sheetShape,
+                color = colorResource(R.color.form_white),
+                shadowElevation = 20.dp
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp),
+                        .verticalScroll(rememberScrollState())
+                        .padding(top = 22.dp)
+                        .navigationBarsPadding(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(
-                        text = stringResource(R.string.form_title),
-                        color = colorResource(R.color.form_purple),
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Spacer(modifier = Modifier.height(6.dp))
-
-                    Text(
-                        text = stringResource(R.string.form_subtitle),
-                        color = colorResource(R.color.form_hint),
-                        fontSize = 12.sp
-                    )
-
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        OutlinedTextField(
-                            value = firstName,
-                            onValueChange = { firstName = it },
-                            label = {
-                                Text(
-                                    text = stringResource(R.string.first_name),
-                                    fontSize = 12.sp
-                                )
-                            },
-                            textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
-                            singleLine = true,
-                            shape = textFieldShape,
-                            colors = formTextFieldColors,
-                            modifier = Modifier
-                                .weight(1f)
-                        )
-
-                        OutlinedTextField(
-                            value = lastName,
-                            onValueChange = { lastName = it },
-                            label = {
-                                Text(
-                                    text = stringResource(R.string.last_name),
-                                    fontSize = 12.sp
-                                )
-                            },
-                            textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
-                            singleLine = true,
-                            shape = textFieldShape,
-                            colors = formTextFieldColors,
-                            modifier = Modifier
-                                .weight(1f)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    OutlinedTextField(
-                        value = email,
-                        onValueChange = { email = it },
-                        label = {
-                            Text(
-                                text = stringResource(R.string.email),
-                                fontSize = 12.sp
-                            )
-                        },
-                        textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
-                        singleLine = true,
-                        shape = textFieldShape,
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Email
-                        ),
-                        colors = formTextFieldColors,
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                            .padding(horizontal = 20.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+                        Text(
+                            text = stringResource(R.string.form_title),
+                            color = colorResource(R.color.form_purple),
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+                        Spacer(modifier = Modifier.height(6.dp))
+
+                        Text(
+                            text = stringResource(R.string.form_subtitle),
+                            color = colorResource(R.color.form_hint),
+                            fontSize = 12.sp
+                        )
+
+                        Spacer(modifier = Modifier.height(14.dp))
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            OutlinedTextField(
+                                value = firstName,
+                                onValueChange = { firstName = it },
+                                label = {
+                                    Text(
+                                        text = stringResource(R.string.first_name),
+                                        fontSize = 12.sp
+                                    )
+                                },
+                                textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                                singleLine = true,
+                                shape = textFieldShape,
+                                colors = formTextFieldColors,
+                                modifier = Modifier
+                                    .weight(1f)
+                            )
+
+                            OutlinedTextField(
+                                value = lastName,
+                                onValueChange = { lastName = it },
+                                label = {
+                                    Text(
+                                        text = stringResource(R.string.last_name),
+                                        fontSize = 12.sp
+                                    )
+                                },
+                                textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                                singleLine = true,
+                                shape = textFieldShape,
+                                colors = formTextFieldColors,
+                                modifier = Modifier
+                                    .weight(1f)
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
                         OutlinedTextField(
-                            value = birthDate,
-                            onValueChange = {},
-                            readOnly = true,
-                            singleLine = true,
+                            value = email,
+                            onValueChange = { email = it },
                             label = {
                                 Text(
-                                    text = stringResource(R.string.birth_date),
-                                    fontSize = 12.sp,
-                                    maxLines = 1
+                                    text = stringResource(R.string.email),
+                                    fontSize = 12.sp
                                 )
                             },
                             textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                            singleLine = true,
                             shape = textFieldShape,
-                            trailingIcon = {
-                                IconButton(
-                                    onClick = { showDatePicker = true },
-                                    modifier = Modifier.size(36.dp)
-                                ) {
-                                    Icon(
-                                        painter = painterResource(R.drawable.ic_calendar),
-                                        contentDescription = null,
-                                        tint = colorResource(R.color.form_text),
-                                        modifier = Modifier.size(20.dp)
-                                    )
-                                }
-                            },
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Email
+                            ),
                             colors = formTextFieldColors,
                             modifier = Modifier
-                                .weight(1f)
+                                .fillMaxWidth()
                         )
 
-                        ExposedDropdownMenuBox(
-                            expanded = showExperienceMenu,
-                            onExpandedChange = {
-                                showExperienceMenu = !showExperienceMenu
-                            },
-                            modifier = Modifier
-                                .weight(1f)
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             OutlinedTextField(
-                                value = experience,
+                                value = birthDate,
                                 onValueChange = {},
                                 readOnly = true,
                                 singleLine = true,
                                 label = {
                                     Text(
-                                        text = stringResource(R.string.experience),
+                                        text = stringResource(R.string.birth_date),
                                         fontSize = 12.sp,
                                         maxLines = 1
                                     )
@@ -285,220 +248,260 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                                 textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
                                 shape = textFieldShape,
                                 trailingIcon = {
-                                    ExposedDropdownMenuDefaults.TrailingIcon(
-                                        expanded = showExperienceMenu
-                                    )
+                                    IconButton(
+                                        onClick = { showDatePicker = true },
+                                        modifier = Modifier.size(36.dp)
+                                    ) {
+                                        Icon(
+                                            painter = painterResource(R.drawable.ic_calendar),
+                                            contentDescription = null,
+                                            tint = colorResource(R.color.form_text),
+                                            modifier = Modifier.size(20.dp)
+                                        )
+                                    }
                                 },
                                 colors = formTextFieldColors,
                                 modifier = Modifier
-                                    .menuAnchor()
-                                    .fillMaxWidth()
+                                    .weight(1f)
                             )
-                            ExposedDropdownMenu(
+
+                            ExposedDropdownMenuBox(
                                 expanded = showExperienceMenu,
-                                onDismissRequest = {
-                                    showExperienceMenu = false
-                                }
+                                onExpandedChange = {
+                                    showExperienceMenu = !showExperienceMenu
+                                },
+                                modifier = Modifier
+                                    .weight(1f)
                             ) {
-                                listOf(
-                                    stringResource(R.string.exp_less_than_1),
-                                    stringResource(R.string.exp_1_2_years),
-                                    stringResource(R.string.exp_3_5_years),
-                                    stringResource(R.string.exp_more_than_5)
-                                ).forEach { level ->
-                                    DropdownMenuItem(
-                                        text = {
-                                            Text(
-                                                level,
-                                                color = colorResource(R.color.form_text),
-                                                fontSize = 13.sp
-                                            )
-                                        },
-                                        onClick = {
-                                            experience = level
-                                            showExperienceMenu = false
-                                        }
-                                    )
+                                OutlinedTextField(
+                                    value = experience,
+                                    onValueChange = {},
+                                    readOnly = true,
+                                    singleLine = true,
+                                    label = {
+                                        Text(
+                                            text = stringResource(R.string.experience),
+                                            fontSize = 12.sp,
+                                            maxLines = 1
+                                        )
+                                    },
+                                    textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                                    shape = textFieldShape,
+                                    trailingIcon = {
+                                        ExposedDropdownMenuDefaults.TrailingIcon(
+                                            expanded = showExperienceMenu
+                                        )
+                                    },
+                                    colors = formTextFieldColors,
+                                    modifier = Modifier
+                                        .menuAnchor()
+                                        .fillMaxWidth()
+                                )
+                                ExposedDropdownMenu(
+                                    expanded = showExperienceMenu,
+                                    onDismissRequest = {
+                                        showExperienceMenu = false
+                                    }
+                                ) {
+                                    listOf(
+                                        stringResource(R.string.exp_less_than_1),
+                                        stringResource(R.string.exp_1_2_years),
+                                        stringResource(R.string.exp_3_5_years),
+                                        stringResource(R.string.exp_more_than_5)
+                                    ).forEach { level ->
+                                        DropdownMenuItem(
+                                            text = {
+                                                Text(
+                                                    level,
+                                                    color = colorResource(R.color.form_text),
+                                                    fontSize = 13.sp
+                                                )
+                                            },
+                                            onClick = {
+                                                experience = level
+                                                showExperienceMenu = false
+                                            }
+                                        )
+                                    }
                                 }
+                            }
+
+                        }
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        Text(
+                            text = stringResource(R.string.choose_skill),
+                            color = colorResource(R.color.form_text),
+                            fontSize = 13.sp,
+                            modifier = Modifier.fillMaxWidth(),
+                            fontWeight = FontWeight.Bold
+                        )
+
+                        Spacer(modifier = Modifier.height(4.dp))
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Checkbox(
+                                    checked = androidSkill,
+                                    onCheckedChange = { androidSkill = it },
+                                    colors = checkboxColors
+                                )
+                                Text(
+                                    text = stringResource(R.string.skill_android),
+                                    color = colorResource(R.color.form_text),
+                                    fontSize = 12.sp
+                                )
+                            }
+
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Checkbox(
+                                    checked = uiuxSkill,
+                                    onCheckedChange = { uiuxSkill = it },
+                                    colors = checkboxColors
+                                )
+                                Text(
+                                    text = stringResource(R.string.skill_uiux),
+                                    color = colorResource(R.color.form_text),
+                                    fontSize = 12.sp
+                                )
+                            }
+
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Checkbox(
+                                    checked = webSkill,
+                                    onCheckedChange = { webSkill = it },
+                                    colors = checkboxColors
+                                )
+                                Text(
+                                    text = stringResource(R.string.skill_web),
+                                    color = colorResource(R.color.form_text),
+                                    fontSize = 12.sp
+                                )
                             }
                         }
 
-                    }
-                    Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
 
-                    Text(
-                        text = stringResource(R.string.choose_skill),
-                        color = colorResource(R.color.form_text),
-                        fontSize = 13.sp,
-                        modifier = Modifier.fillMaxWidth(),
-                        fontWeight = FontWeight.Bold
-                    )
+                        val requiredFieldsText = stringResource(R.string.required_fields)
+                        val skillAndroidText = stringResource(R.string.skill_android)
+                        val skillUiuxText = stringResource(R.string.skill_uiux)
+                        val skillWebText = stringResource(R.string.skill_web)
+                        val resultTitleText = stringResource(R.string.result_title)
+                        val resultNameText = stringResource(R.string.result_name)
+                        val resultEmailText = stringResource(R.string.result_email)
+                        val resultBirthDateText = stringResource(R.string.result_birth_date)
+                        val resultExperienceText = stringResource(R.string.result_experience)
+                        val resultSkillsText = stringResource(R.string.result_skills)
 
-                    Spacer(modifier = Modifier.height(4.dp))
+                        Button(
+                            onClick = {
+                                if (
+                                    firstName.isBlank() ||
+                                    lastName.isBlank() ||
+                                    email.isBlank()
+                                ) {
+                                    scope.launch {
+                                        snackbarHostState.showSnackbar(requiredFieldsText)
+                                    }
+                                } else {
+                                    val skills = buildList {
+                                        if (androidSkill) add(skillAndroidText)
+                                        if (uiuxSkill) add(skillUiuxText)
+                                        if (webSkill) add(skillWebText)
+                                    }.joinToString()
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Checkbox(
-                                checked = androidSkill,
-                                onCheckedChange = { androidSkill = it },
-                                colors = checkboxColors
-                            )
-                            Text(
-                                text = stringResource(R.string.skill_android),
-                                color = colorResource(R.color.form_text),
-                                fontSize = 12.sp
-                            )
-                        }
+                                    val message = """
+                                        $resultTitleText
+                                        $resultNameText: $firstName $lastName
+                                        $resultEmailText: $email
+                                        $resultBirthDateText: $birthDate
+                                        $resultExperienceText: $experience
+                                        $resultSkillsText: $skills
+                                    """.trimIndent()
 
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Checkbox(
-                                checked = uiuxSkill,
-                                onCheckedChange = { uiuxSkill = it },
-                                colors = checkboxColors
-                            )
-                            Text(
-                                text = stringResource(R.string.skill_uiux),
-                                color = colorResource(R.color.form_text),
-                                fontSize = 12.sp
-                            )
-                        }
-
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Checkbox(
-                                checked = webSkill,
-                                onCheckedChange = { webSkill = it },
-                                colors = checkboxColors
-                            )
-                            Text(
-                                text = stringResource(R.string.skill_web),
-                                color = colorResource(R.color.form_text),
-                                fontSize = 12.sp
-                            )
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    val requiredFieldsText = stringResource(R.string.required_fields)
-                    val skillAndroidText = stringResource(R.string.skill_android)
-                    val skillUiuxText = stringResource(R.string.skill_uiux)
-                    val skillWebText = stringResource(R.string.skill_web)
-                    val resultTitleText = stringResource(R.string.result_title)
-                    val resultNameText = stringResource(R.string.result_name)
-                    val resultEmailText = stringResource(R.string.result_email)
-                    val resultBirthDateText = stringResource(R.string.result_birth_date)
-                    val resultExperienceText = stringResource(R.string.result_experience)
-                    val resultSkillsText = stringResource(R.string.result_skills)
-
-                    Button(
-                        onClick = {
-                            if (
-                                firstName.isBlank() ||
-                                lastName.isBlank() ||
-                                email.isBlank()
-                            ) {
-                                scope.launch {
-                                    snackbarHostState.showSnackbar(requiredFieldsText)
+                                    scope.launch {
+                                        snackbarHostState.showSnackbar(message)
+                                    }
                                 }
-                            } else {
-                                val skills = buildList {
-                                    if (androidSkill) add(skillAndroidText)
-                                    if (uiuxSkill) add(skillUiuxText)
-                                    if (webSkill) add(skillWebText)
-                                }.joinToString()
+                            },
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(48.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.proceed),
+                                fontSize = 14.sp
+                            )
+                        }
 
-                                val message = """
-                                    $resultTitleText
-                                    $resultNameText: $firstName $lastName
-                                    $resultEmailText: $email
-                                    $resultBirthDateText: $birthDate
-                                    $resultExperienceText: $experience
-                                    $resultSkillsText: $skills
-                                """.trimIndent()
+                        Spacer(modifier = Modifier.height(20.dp))
 
-                                scope.launch {
-                                    snackbarHostState.showSnackbar(message)
-                                }
-                            }
-                        },
-                        shape = RoundedCornerShape(12.dp),
+                    }
+
+                    Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(48.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.proceed),
-                            fontSize = 14.sp
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(20.dp))
-                }
-
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color(0xFFE2E2E2))
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(10.dp)
-                        .background(
-                            brush = Brush.verticalGradient(
-                                colors = listOf(
-                                    Color.Black.copy(alpha = 0.12f),
-                                    Color.Transparent
+                            .height(1.dp)
+                            .background(colorResource(R.color.form_divider))
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(10.dp)
+                            .background(
+                                brush = Brush.verticalGradient(
+                                    colors = listOf(
+                                        Color.Black.copy(alpha = 0.12f),
+                                        Color.Transparent
+                                    )
                                 )
                             )
-                        )
-                )
+                    )
 
-                // White bottom bar area
-                Spacer(modifier = Modifier.height(36.dp))
-            }
-        }
-
-        if (showDatePicker) {
-            val datePickerState = rememberDatePickerState()
-
-            DatePickerDialog(
-                onDismissRequest = { showDatePicker = false },
-                confirmButton = {
-                    TextButton(
-                        onClick = {
-                            datePickerState.selectedDateMillis?.let { millis ->
-                                birthDate = SimpleDateFormat(
-                                    "dd/MM/yyyy",
-                                    Locale.getDefault()
-                                ).format(Date(millis))
-                            }
-                            showDatePicker = false
-                        }
-                    ) {
-                        Text("OK")
-                    }
-                },
-                dismissButton = {
-                    TextButton(
-                        onClick = { showDatePicker = false }
-                    ) {
-                        Text("Cancel")
-                    }
+                    // White bottom bar area
+                    Spacer(modifier = Modifier.height(36.dp))
                 }
-            ) {
-                DatePicker(state = datePickerState)
+            }
+
+            if (showDatePicker) {
+                val datePickerState = rememberDatePickerState()
+                val dateFormat = stringResource(R.string.date_format)
+                val okText = stringResource(R.string.ok)
+                val cancelText = stringResource(R.string.cancel)
+
+                DatePickerDialog(
+                    onDismissRequest = { showDatePicker = false },
+                    confirmButton = {
+                        TextButton(
+                            onClick = {
+                                datePickerState.selectedDateMillis?.let { millis ->
+                                    birthDate = SimpleDateFormat(
+                                        dateFormat,
+                                        Locale.getDefault()
+                                    ).format(Date(millis))
+                                }
+                                showDatePicker = false
+                            }
+                        ) {
+                            Text(okText)
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(
+                            onClick = { showDatePicker = false }
+                        ) {
+                            Text(cancelText)
+                        }
+                    }
+                ) {
+                    DatePicker(state = datePickerState)
+                }
             }
         }
     }
 }
-
-
-
-
-
-
