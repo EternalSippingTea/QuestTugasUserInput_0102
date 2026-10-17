@@ -2,6 +2,7 @@ package com.example.questtugasuserinput_102
 
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +21,7 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.rememberCoroutineScope
@@ -139,7 +141,29 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
 
                     Spacer(modifier = Modifier.height(14.dp))
 
-                }
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        OutlinedTextField(
+                            value = firstName,
+                            onValueChange = { firstName = it },
+                            label = {
+                                Text(
+                                    text = stringResource(R.string.first_name),
+                                    fontSize = 12.sp
+                                )
+                            },
+                            textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                            singleLine = true,
+                            shape = textFieldShape,
+                            colors = formTextFieldColors,
+                            modifier = Modifier
+                                .weight(1f)
+                        )
+
+
+                    }
 
 
 
