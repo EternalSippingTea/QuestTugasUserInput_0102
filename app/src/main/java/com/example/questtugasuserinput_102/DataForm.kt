@@ -304,7 +304,20 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                                 }
                             }
                         }
+
                     }
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = stringResource(R.string.choose_skill),
+                        color = colorResource(R.color.form_text),
+                        fontSize = 13.sp,
+                        modifier = Modifier.fillMaxWidth(),
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Spacer(modifier = Modifier.height(4.dp))
+                    
                 }
 
 
