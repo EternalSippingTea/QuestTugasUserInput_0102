@@ -12,10 +12,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.SnackbarHost
@@ -206,8 +209,41 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        OutlinedTextField(
+                            value = birthDate,
+                            onValueChange = {},
+                            readOnly = true,
+                            singleLine = true,
+                            label = {
+                                Text(
+                                    text = stringResource(R.string.birth_date),
+                                    fontSize = 12.sp,
+                                    maxLines = 1
+                                )
+                            },
+                            textStyle = LocalTextStyle.current.copy(fontSize = 13.sp),
+                            shape = textFieldShape,
+                            trailingIcon = {
+                                IconButton(
+                                    onClick = { showDatePicker = true },
+                                    modifier = Modifier.size(36.dp)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_calendar),
+                                        contentDescription = null,
+                                        tint = colorResource(R.color.form_text),
+                                        modifier = Modifier.size(20.dp)
+                                    )
+                                }
+                            },
 
-                }
+
+                    }
 
 
 
