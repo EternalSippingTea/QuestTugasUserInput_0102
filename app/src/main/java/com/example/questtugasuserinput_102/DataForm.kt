@@ -307,7 +307,13 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                                     stringResource(R.string.exp_more_than_5)
                                 ).forEach { level ->
                                     DropdownMenuItem(
-                                        text = { Text(level, color = colorResource(R.color.form_text), fontSize = 13.sp) },
+                                        text = {
+                                            Text(
+                                                level,
+                                                color = colorResource(R.color.form_text),
+                                                fontSize = 13.sp
+                                            )
+                                        },
                                         onClick = {
                                             experience = level
                                             showExperienceMenu = false
@@ -429,9 +435,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                             fontSize = 14.sp
                         )
                     }
-
                     Spacer(modifier = Modifier.height(20.dp))
-
                 }
 
                 Box(
