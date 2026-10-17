@@ -241,6 +241,10 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                                     )
                                 }
                             },
+                            colors = formTextFieldColors,
+                            modifier = Modifier
+                                .weight(1f)
+                        )
 
 
                     }
