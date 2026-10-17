@@ -24,10 +24,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -47,6 +50,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -362,6 +366,63 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                             )
                         }
                     }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    val requiredFieldsText = stringResource(R.string.required_fields)
+                    val skillAndroidText = stringResource(R.string.skill_android)
+                    val skillUiuxText = stringResource(R.string.skill_uiux)
+                    val skillWebText = stringResource(R.string.skill_web)
+                    val resultTitleText = stringResource(R.string.result_title)
+                    val resultNameText = stringResource(R.string.result_name)
+                    val resultEmailText = stringResource(R.string.result_email)
+                    val resultBirthDateText = stringResource(R.string.result_birth_date)
+                    val resultExperienceText = stringResource(R.string.result_experience)
+                    val resultSkillsText = stringResource(R.string.result_skills)
+
+                    Button(
+                        onClick = {
+                            if (
+                                firstName.isBlank() ||
+                                lastName.isBlank() ||
+                                email.isBlank()
+                            ) {
+                                scope.launch {
+                                    snackbarHostState.showSnackbar(requiredFieldsText)
+                                }
+                            } else {
+                                val skills = buildList {
+                                    if (androidSkill) add(skillAndroidText)
+                                    if (uiuxSkill) add(skillUiuxText)
+                                    if (webSkill) add(skillWebText)
+                                }.joinToString()
+
+                                val message = """
+                                    $resultTitleText
+                                    $resultNameText: $firstName $lastName
+                                    $resultEmailText: $email
+                                    $resultBirthDateText: $birthDate
+                                    $resultExperienceText: $experience
+                                    $resultSkillsText: $skills
+                                """.trimIndent()
+
+                                scope.launch {
+                                    snackbarHostState.showSnackbar(message)
+                                }
+                            }
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.proceed),
+                            fontSize = 14.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(20.dp))
 
                 }
 
