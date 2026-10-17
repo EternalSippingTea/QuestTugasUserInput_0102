@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -127,7 +128,18 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold
                     )
-            }
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    Text(
+                        text = stringResource(R.string.form_subtitle),
+                        color = colorResource(R.color.form_hint),
+                        fontSize = 12.sp
+                    )
+
+                    Spacer(modifier = Modifier.height(14.dp))
+
+                }
 
 
 
